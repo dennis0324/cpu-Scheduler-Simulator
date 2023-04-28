@@ -4,12 +4,17 @@
   "description": "",
   "main": "./build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "@datastructures-js/priority-queue": "^6.2.0",
     "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0"
   }
 }

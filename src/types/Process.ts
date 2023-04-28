@@ -5,7 +5,6 @@ export default interface Process {
     priority:number;
     remainingTime:number;
     waitingTime:number;
-    turnaroundTime:number;
     completionTime:number;
 
     
