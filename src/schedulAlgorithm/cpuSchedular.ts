@@ -3,7 +3,7 @@ import Process from "@/types/process";
 /**
  * 프로세스를 실행하는 스케줄러 클래스 scheduler class to execute processes
  */
-export abstract class schedular{
+export default abstract class schedular{
     // 스케줄러 실행 시간 scheduler execute time
     private currentTime:number
     // 실행 할 전체 프로세스 큐 queue of all processes to execute
@@ -13,6 +13,7 @@ export abstract class schedular{
 
     // 전체 프로세스 실행 시간 total process execute time
     private totalExecuteTime:number
+
     // 프로세스 실행 결과 process execute result
     private result:Process[]
 
@@ -27,8 +28,8 @@ export abstract class schedular{
 
     }
 
-    protected workingPCB = () => this.dispatchedPCB != null
-    
+
+    protected abstract workingPCB():boolean;
     protected abstract shouldDispatch():boolean;
     protected abstract push(process:Process):void;
     protected abstract dispatch():void;
@@ -36,7 +37,7 @@ export abstract class schedular{
     
 
     onPush(process:Process){
-        while(this.workingPCB()){
+        while(this.workingPCB() && this.currentTime < process.arrivalTime){
             if(this.shouldDispatch())
                 this.dispatch()
             this.run()
@@ -45,11 +46,14 @@ export abstract class schedular{
 
     onDispatch(process:Process){
         this.dispatchedPCB = process;
+        this.dispatchedPCB!.executeTime = 0
+        this.dispatchedPCB!.waitingTime = this.currentTime - this.dispatchedPCB!.arrivalTime
     }
 
     run(){
         this.currentTime++;
         this.dispatchedPCB!.remainingTime--;
+        this.dispatchedPCB!.executeTime++;
         if(!this.dispatchedPCB!.remainingTime)
             this.timeout()
     }
@@ -63,7 +67,7 @@ export abstract class schedular{
     }
 
 
-    getResult(processes:Process[]){
+    simulate(processes:Process[]){
         this.processQueue = processes.sort((a,b) => a.arrivalTime - b.arrivalTime)
         this.processQueue.forEach(e => this.push(e))
         // 잔여 프로세스 실행 remaining process execute
@@ -73,9 +77,18 @@ export abstract class schedular{
             this.run()
         }
         console.log(this.totalExecuteTime)
+    }
+
+    getResult(){
         return this.result
     }
 
+    getAverageWaitingTime(){
+        return this.result.reduce((a,b) => a + b.waitingTime,0) / this.result.length
+    }
+    getAverageTurnaroundTime(){
+        return this.result.reduce((a,b) => a + (b.executeTime + b.waitingTime),0) / this.result.length
+    }
 }
 
 const createProcess = (pid:number,arrivalTime:number,burstTime:number,priority:number) => {
@@ -86,7 +99,8 @@ const createProcess = (pid:number,arrivalTime:number,burstTime:number,priority:n
         burstTime: burstTime,
         priority: priority,
         waitingTime: 0,
-        completionTime: 0
+        completionTime: 0,
+        executeTime: 0
     }
     return process
 }
@@ -99,7 +113,8 @@ const copyProcess = (process:Process) => {
         remainingTime: process.remainingTime, //복사하기 위한 코드
         priority: process.priority,
         waitingTime: process.waitingTime,
-        completionTime: process.completionTime
+        completionTime: process.completionTime,
+        executeTime: process.executeTime
     }
     return newProcess
 }
