@@ -1,5 +1,5 @@
 import Process from "@/types/process";
-import { schedular} from "../cpuSchedular";
+import schedular from "../cpuSchedular";
 
 export default class fcfs extends schedular{
 
@@ -10,7 +10,7 @@ export default class fcfs extends schedular{
         this.readyQueue = []
     }
 
-    protected override workingPCB: () => boolean = () => super.workingPCB != null || this.readyQueue.length > 0
+    protected override workingPCB: () => boolean = () => this.dispatchedPCB != null || this.readyQueue.length > 0
 
     push(process:Process){
         this.onPush(process)
