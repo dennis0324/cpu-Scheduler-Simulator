@@ -1,5 +1,5 @@
-import Process from "@/types/Process";
-import { schedular} from "../CpuSchedular";
+import Process from "@/types/process";
+import { schedular} from "../cpuSchedular";
 
 export default class fcfs extends schedular{
 

@@ -1,5 +1,5 @@
 import fcfs from "@/schedulAlgorithm/type/fcfs"
-import {createProcess} from "@/schedulAlgorithm/CpuSchedular"
+import {createProcess} from "@/schedulAlgorithm/cpuSchedular"
 debugger;
 const processArray = [...Array(5)].map((_, i) => createProcess(i, i, ~~(Math.random() * 10 ) + 1, i));
 
