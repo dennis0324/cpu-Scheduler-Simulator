@@ -5,7 +5,8 @@
   "main": "./build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts"
+    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts",
+    "ts":"node start.js"
   },
   "author": "",
   "license": "MIT",
