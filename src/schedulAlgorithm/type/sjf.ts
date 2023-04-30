@@ -13,6 +13,7 @@ export default class sjf extends schedular{
     }
 
     protected override workingPCB: () => boolean = () => this.dispatchedPCB != null || this.readyQueue.size() > 0
+    protected override shouldDispatch = (): boolean =>this.dispatchedPCB == null;
 
     push(process:Process){
         this.onPush(process)
@@ -23,7 +24,4 @@ export default class sjf extends schedular{
         this.onDispatch(this.readyQueue.dequeue())
     }
 
-    shouldDispatch(): boolean {
-        return this.dispatchedPCB == null;
-    }
 }
