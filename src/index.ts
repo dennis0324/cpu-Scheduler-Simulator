@@ -13,13 +13,5 @@ export {
     preemptivePriority,
     rr,
     sjf,
-    srt,
+    srt
 }
-
-module.exports = fcfs
-module.exports = hrn
-module.exports = nonpreemptivePriority
-module.exports = preemptivePriority
-module.exports = rr
-module.exports = sjf
-module.exports = srt
