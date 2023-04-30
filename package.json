@@ -2,8 +2,8 @@
   "name": "cpuschedulerts",
   "version": "1.0.4",
   "description": "this is package for cpu scheduling",
-  "main": "./dist/index.js",
-  "types": "/dist/index.d.ts",
+  "main": "./dest/index.js",
+  "types": "/dest/index.d.ts",
   "scripts": {
     "ts": "node start.js",
     "build": "tsc && tsc-alias"
