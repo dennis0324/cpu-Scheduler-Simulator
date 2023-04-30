@@ -18,6 +18,8 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "outDir": "dest",
+    "declaration": true,
     "paths": {
       "@/*": [
         "src/*"
@@ -33,4 +35,7 @@
   "include": [
     "src/**/*.ts",
   ],
+  "exclude": [
+    "node_modules"
+  ]
 }
