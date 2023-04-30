@@ -1,6 +1,6 @@
 {
   "name": "cpuschedulerts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "this is package for cpu scheduling",
   "main": "./dest/index.js",
   "types": "/dest/index.d.ts",
