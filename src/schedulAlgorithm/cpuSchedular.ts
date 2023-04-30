@@ -4,18 +4,18 @@ import Process from "@/types/process";
  * 프로세스를 실행하는 스케줄러 클래스 scheduler class to execute processes
  */
 export default abstract class schedular{
-    // 스케줄러 실행 시간 scheduler execute time
-    private currentTime:number
     // 실행 할 전체 프로세스 큐 queue of all processes to execute
     private processQueue:Process[]
+    // 전체 프로세스 실행 시간 total process execute time
+    private totalExecuteTime:number
+    // 프로세스 실행 결과 process execute result
+    private result:Process[]
+    // 스케줄러 실행 시간 scheduler execute time
+    protected currentTime:number
     // 실행 중인 프로세스 executed process
     protected dispatchedPCB:Process | null
 
-    // 전체 프로세스 실행 시간 total process execute time
-    private totalExecuteTime:number
 
-    // 프로세스 실행 결과 process execute result
-    private result:Process[]
 
 
     constructor(){
@@ -72,6 +72,8 @@ export default abstract class schedular{
         this.processQueue.forEach(e => this.push(e))
         // 잔여 프로세스 실행 remaining process execute
         while(this.workingPCB()){
+            if(this.dispatchedPCB?.pid === 0) 
+                console.log(this.currentTime)
             if(this.shouldDispatch())
                 this.dispatch()
             this.run()
@@ -84,10 +86,10 @@ export default abstract class schedular{
     }
 
     getAverageWaitingTime(){
-        return this.result.reduce((a,b) => a + b.waitingTime,0) / this.result.length
+        return this.result.reduce((a,b) => a + b.waitingTime,0) / this.processQueue.length
     }
     getAverageTurnaroundTime(){
-        return this.result.reduce((a,b) => a + (b.executeTime + b.waitingTime),0) / this.result.length
+        return this.result.reduce((a,b) => a + (b.executeTime + b.waitingTime),0) / this.processQueue.length
     }
 }
 
