@@ -4,6 +4,11 @@
   "description": "this is package for cpu scheduling",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*.ts",
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
   "scripts": {
     "ts": "node start.js",
     "build": "tsc && tsc-alias"
