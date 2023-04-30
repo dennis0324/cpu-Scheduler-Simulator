@@ -9,7 +9,6 @@ import srt from "@/schedulAlgorithm/type/srt"
 
 
 module.exports = {
-    name: '@cpuScheduler',
     fcfs,
     sjf,
     nonpreemptivePriority,
