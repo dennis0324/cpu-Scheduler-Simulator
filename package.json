@@ -1,14 +1,14 @@
 {
-  "name": "cpuschedular",
+  "name": "cpuschedulerts",
   "version": "1.0.0",
-  "description": "",
-  "main": "./build/index.js",
+  "description": "this is package for sch scheduling",
+  "main": "./dest/index.js",
+  "types": "/dest/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "ts-node": "ts-node -r tsconfig-paths/register ./src/index.ts",
-    "ts":"node start.js"
+    "ts": "node start.js",
+    "build": "tsc && tsc-alias"
   },
-  "author": "",
+  "author": "dennis ko",
   "license": "MIT",
   "dependencies": {
     "@datastructures-js/priority-queue": "^6.2.0",
@@ -16,6 +16,22 @@
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.6",
     "tsconfig-paths": "^4.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennis0324/cpu-Scheduler-Simulator.git"
+  },
+  "keywords": [
+    "cpu",
+    "scheduler",
+    "simulator",
+    "js",
+    "ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/dennis0324/cpu-Scheduler-Simulator/issues"
+  },
+  "homepage": "https://github.com/dennis0324/cpu-Scheduler-Simulator#readme"
 }
