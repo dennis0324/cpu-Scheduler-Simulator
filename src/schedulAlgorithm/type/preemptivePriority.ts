@@ -1,4 +1,4 @@
-import schedular, { copyProcess } from "@/schedulAlgorithm/cpuSchedular";
+import schedular, { copyProcess } from "@/schedulAlgorithm/cpuScheduler";
 import Process from "@/types/process";
 import { PriorityQueue } from "@datastructures-js/priority-queue";
 

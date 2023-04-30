@@ -1,4 +1,4 @@
-import {createProcess} from "@/schedulAlgorithm/cpuSchedular"
+import {createProcess} from "@/schedulAlgorithm/cpuScheduler"
 import staticPriority from "@/schedulAlgorithm/type/nonpreemptivePriority";
 debugger;
 const processArray = [...Array(5)].map((_, i) => createProcess(i, i, ~~(Math.random() * 10 ) + 1, i));
