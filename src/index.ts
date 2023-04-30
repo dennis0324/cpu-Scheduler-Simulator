@@ -6,12 +6,10 @@ import rr from "./schedulAlgorithm/type/rr";
 import sjf from "./schedulAlgorithm/type/sjf";
 import srt from "./schedulAlgorithm/type/srt";
 
-export {
-    fcfs,
-    hrn,
-    nonpreemptivePriority,
-    preemptivePriority,
-    rr,
-    sjf,
-    srt
-}
+exports.fcfs = fcfs;
+exports.hrn = hrn;
+exports.nonpreemptivePriority = nonpreemptivePriority;
+exports.preemptivePriority = preemptivePriority;
+exports.rr = rr;
+exports.sjf = sjf;
+exports.srt = srt;
