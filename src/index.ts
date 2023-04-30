@@ -1,8 +1,20 @@
-import fcfs from "@/schedulAlgorithm/type/fcfs"
-import {createProcess} from "@/schedulAlgorithm/CpuSchedular"
-debugger;
-const processArray = [...Array(5)].map((_, i) => createProcess(i, i, ~~(Math.random() * 10 ) + 1, i));
+import fcfs from "./schedulAlgorithm/type/fcfs"
+import sjf from "./schedulAlgorithm/type/sjf"
+import nonpreemptivePriority from "./schedulAlgorithm/type/nonpreemptivePriority"
+import preemptivePriority from "./schedulAlgorithm/type/preemptivePriority"
+import hrn from "./schedulAlgorithm/type/fcfs"
+import rr from "@/schedulAlgorithm/type/rr"
+import srt from "@/schedulAlgorithm/type/srt"
 
-const FCFS = new fcfs();
-// processArray.forEach(e => FCFS.push(e))
-console.log(FCFS.getResult(processArray))
+
+
+module.exports = {
+    name: '@cpuScheduler',
+    fcfs,
+    sjf,
+    nonpreemptivePriority,
+    preemptivePriority,
+    hrn,
+    rr,
+    srt
+}
