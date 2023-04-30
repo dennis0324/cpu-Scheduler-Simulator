@@ -2,7 +2,7 @@ import schedular from "@/schedulAlgorithm/cpuScheduler";
 import Process from "@/types/process";
 import { PriorityQueue } from "@datastructures-js/priority-queue";
 
-export default class staticPriority extends schedular{
+export default class nonpreemptivePriority extends schedular{
 
     private readyQueue: PriorityQueue<Process>
     constructor(){
