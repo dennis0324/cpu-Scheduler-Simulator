@@ -6,6 +6,7 @@ export default interface Process {
     completionTime:number;
     
     arrivalTime:number;
+    lastfinishTime:number;
     waitingTime:number;
     executeTime:number;
     

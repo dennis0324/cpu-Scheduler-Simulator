@@ -47,7 +47,7 @@ export default abstract class schedular{
     onDispatch(process:Process){
         this.dispatchedPCB = process;
         this.dispatchedPCB!.executeTime = 0
-        this.dispatchedPCB!.waitingTime = this.currentTime - this.dispatchedPCB!.arrivalTime
+        this.dispatchedPCB!.waitingTime = this.currentTime - this.dispatchedPCB!.lastfinishTime
     }
 
     run(){
@@ -102,7 +102,8 @@ const createProcess = (pid:number,arrivalTime:number,burstTime:number,priority:n
         priority: priority,
         waitingTime: 0,
         completionTime: 0,
-        executeTime: 0
+        executeTime: 0,
+        lastfinishTime: arrivalTime
     }
     return process
 }
@@ -116,7 +117,8 @@ const copyProcess = (process:Process) => {
         priority: process.priority,
         waitingTime: process.waitingTime,
         completionTime: process.completionTime,
-        executeTime: process.executeTime
+        executeTime: process.executeTime,
+        lastfinishTime: process.lastfinishTime
     }
     return newProcess
 }

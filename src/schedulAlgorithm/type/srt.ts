@@ -25,7 +25,7 @@ export default class sjf extends schedular{
 
     dispatch(): void {
         if(this.dispatchedPCB != null){
-            this.dispatchedPCB!.arrivalTime = this.currentTime
+            this.dispatchedPCB!.lastfinishTime = this.currentTime
             if(this.dispatchedPCB.remainingTime > 0){
                 this.readyQueue.push(copyProcess(this.dispatchedPCB))
             }

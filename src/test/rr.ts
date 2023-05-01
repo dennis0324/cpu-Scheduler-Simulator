@@ -11,7 +11,8 @@ const processArray = [{
     priority: 8,
     waitingTime: 0,
     completionTime: 0,
-    executeTime: 10
+    executeTime: 0,
+    lastfinishTime: 0
   },
   {
     pid: 1,
@@ -19,9 +20,10 @@ const processArray = [{
     burstTime: 4,
     remainingTime: 4,
     priority: 4,
-    waitingTime: 9,
+    waitingTime: 0,
     completionTime: 0,
-    executeTime: 4
+    executeTime: 0,
+    lastfinishTime: 1
   },
   {
     pid: 2,
@@ -31,7 +33,8 @@ const processArray = [{
     priority: 8,
     waitingTime: 0,
     completionTime: 0,
-    executeTime: 0
+    executeTime: 0,
+    lastfinishTime: 2
   },
   {
     pid: 3,
@@ -39,9 +42,10 @@ const processArray = [{
     burstTime: 10,
     remainingTime: 10,
     priority: 5,
-    waitingTime: 11,
+    waitingTime: 0,
     completionTime: 0,
-    executeTime: 10
+    executeTime: 0,
+    lastfinishTime: 3
   },
   {
     pid: 4,
@@ -51,7 +55,8 @@ const processArray = [{
     priority: 6,
     waitingTime: 0,
     completionTime: 0,
-    executeTime: 0
+    executeTime: 0,
+    lastfinishTime: 4
   }
 ]
 
