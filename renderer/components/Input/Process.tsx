@@ -1,49 +1,79 @@
+import React from "react";
 import style from "styled-components"
+import DeleteButton from "./DeleteButton";
+import {ControlProcess} from '../../pages/home';
 
 const StyledFieldset = style.fieldset`
 `
 
-function Process({index,needPriority,handlePid,handleBrust,handleArrival,handlePriority}){
-    let priorityBtn;
-    if(needPriority === true) priorityBtn = <input
-                                                onChange={handlePriority}
-                                                type="text"
-                                                id="arrival-time"
-                                                placeholder="e.g. 0 2 4 6 8"
-                                                // ref={arrivalTimeRef}
-                                            />
-    else priorityBtn = null;
+function Process(props:ControlProcess & {index} ){
 
+    const handleChange = (title,e) => {
+        props.changeValue(props.index,title,e.target.value)
+    }
+
+    const dataExist = (title) => {
+        const data = props.processes[props.index][title]
+        if(data=== undefined || data === -1){
+            return false
+        }
+        return true
+
+    }
     return (
-        <StyledFieldset className={`flex w-100`}>
-            <div className={'mx-4'}>
-                {index + 1}
-            </div>
-            <input
-                onChange={handlePid}
-                type="text"
-                id="pid"
-                placeholder="number"
-                className={'w-14 mx-4'}
-            />
-            <input
-                onChange={handleBrust}
-                type="text"
-                id="brust-time"
-                placeholder="number"
-                className={"w-14 mx-4"}
+        <tr>
+            <td className={'w-14 mx-4 text-center'}>
+                {props.index + 1}
+            </td>
+            <td>
+                <input
+                    onChange={(e) => handleChange("pid",e)}
+                    type="text"
+                    id="pid"
+                    placeholder="number"
+                    value={dataExist('pid') ? props.processes[props.index].pid : ''}
+                    className={'w-14 mx-4'}
+                />
+            </td>
+            <td>
+                <input
+                    onChange={(e) => handleChange("brustTime",e)}
+                    type="text"
+                    id="brust-time"
+                    placeholder="number"
+                    value={dataExist('brustTime') ? props.processes[props.index].brustTime : ''}
+                    className={"w-14 mx-4"}
 
-            />
-            <input
-                onChange={handleArrival}
-                type="text"
-                id="arrival-time"
-                placeholder="number"
-                className={"w-14 mx-4"}
-            />  
-            {priorityBtn}          
-            
-        </StyledFieldset>
+                />
+            </td>
+            <td>
+                <input
+                    onChange={(e) => handleChange("arrialTime",e)}
+                    type="text"
+                    id="arrival-time"
+                    placeholder="number"
+                    value={dataExist('arrialTime') ? props.processes[props.index].arrialTime : ''}
+                    className={"w-14 mx-4"}
+                />  
+            </td>
+            <td>
+                <input
+                    // readOnly={needPriority === false}
+                    className={"w-14 mx-4"}
+                    onChange={(e) => handleChange("priority",e)}
+                    type="text"
+                    id="arrival-time"
+                    value={dataExist('priority') ? props.processes[props.index].priority : ''}
+                    placeholder="e.g. 0 2 4 6 8"
+                />   
+            </td>
+            <td className={'text-center'}>
+                <DeleteButton
+                index = {props.index}
+                onButtonDelete = {props.removeProcessRow}
+                />
+            </td>
+        </tr>
     )
 }
 
