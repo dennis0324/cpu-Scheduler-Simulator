@@ -1,14 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* 
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities"; */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
 
 @layer base {
   body {
+    font-family: 'Roboto', sans-serif;
   }
 }
 
 @layer components {
   .btn-blue {
     @apply text-white font-bold px-4 py-2 rounded bg-blue-600 hover:bg-blue-500;
+  }
+}
+
+@layer components {
+  th{
+    color: #9eabb4;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  tbody td{
+    padding: 12px 8px !important;
+    vertical-align: middle !important;
+    color: #53646f;
+    font-size: 13px;
+    font-weight: 400;
+    position:relative;
+    line-height: 18px !important;
+    border:0 !important;
   }
 }
