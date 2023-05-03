@@ -31,6 +31,7 @@ function ProcessConatiner(){
     <StyleCompo>
       {
         processesRef.current.map((process, index) => <Process 
+        index = {index}
         needPriority={needPriority}
         handlePid={handlePid}
         handleBrust={handleBrust}

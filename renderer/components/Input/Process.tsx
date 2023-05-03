@@ -3,7 +3,7 @@ import style from "styled-components"
 const StyledFieldset = style.fieldset`
 `
 
-function Process({needPriority,handlePid,handleBrust,handleArrival,handlePriority}){
+function Process({index,needPriority,handlePid,handleBrust,handleArrival,handlePriority}){
     let priorityBtn;
     if(needPriority === true) priorityBtn = <input
                                                 onChange={handlePriority}
@@ -14,41 +14,32 @@ function Process({needPriority,handlePid,handleBrust,handleArrival,handlePriorit
                                             />
     else priorityBtn = null;
 
-    const colNumHandler = () => {
-        if(needPriority === true) return "grid-cols-4";
-        else return "grid-cols-3";
-    }
-
     return (
-        <StyledFieldset className={`flex gap-4`}>
-            <div className={"flex-none w-20"}>
-
-                <input
-                    onChange={handlePid}
-                    type="text"
-                    id="pid"
-                    placeholder="e.g. 0"
-                    
-                    // ref={arrivalTimeRef}
-                />
+        <StyledFieldset className={`flex w-100`}>
+            <div className={'mx-4'}>
+                {index + 1}
             </div>
+            <input
+                onChange={handlePid}
+                type="text"
+                id="pid"
+                placeholder="number"
+                className={'w-14 mx-4'}
+            />
             <input
                 onChange={handleBrust}
                 type="text"
                 id="brust-time"
-                placeholder="e.g. 0"
-                className={"cols-start-2 row-start-1"}
+                placeholder="number"
+                className={"w-14 mx-4"}
 
-                // ref={arrivalTimeRef}
             />
             <input
                 onChange={handleArrival}
                 type="text"
                 id="arrival-time"
-                placeholder="e.g. 0"
-                className="col-span-1"
-
-                // ref={arrivalTimeRef}
+                placeholder="number"
+                className={"w-14 mx-4"}
             />  
             {priorityBtn}          
             
