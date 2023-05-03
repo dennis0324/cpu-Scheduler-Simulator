@@ -1,9 +1,10 @@
-import stlye from "styled-components"
+import PlusIcon from "../svg/PlusIcon";
 
 function AddButton({buttonPressed}){
-
     return (
-        <button onClick={buttonPressed}>add</button>
+        <button onClick={buttonPressed}>
+            <PlusIcon size={25} color={"#53646f"}/>
+        </button>
     );
 };
 
