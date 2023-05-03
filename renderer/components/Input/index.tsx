@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SelectAlgor, { defaultOption } from './SelectAlgor';
 import AddButton from './AddButton';
 import ProcessConatiner from './ProcessContainer';
-
+import {ControlProcess} from '../../pages/home';
 
 export const StyledSelect = styled(Select)`
   .react-select__control {
@@ -36,7 +36,7 @@ export const StyledSelect = styled(Select)`
   }
 `;
 
-function Input(){
+function Input(props:ControlProcess){
   const [selectedAlgo, setSelectedAlgo] = useState(defaultOption);
   const buttonPressed = () => {
     console.log("button pressed");
@@ -54,7 +54,9 @@ function Input(){
       </fieldset>
       <fieldset>
         <label>Process</label>
-        <ProcessConatiner/>
+        <ProcessConatiner
+          {...props}
+        />
       </fieldset>
     </div>
   );
