@@ -22,44 +22,44 @@ function Process(props:ControlProcess & {index} ){
     }
     return (
         <tr>
-            <td className={'w-14 mx-4 text-center'}>
+            <td className={'w-14 text-center'}>
                 {props.index + 1}
             </td>
-            <td>
+            <td className={'w-14 text-center'}>
                 <input
                     onChange={(e) => handleChange("pid",e)}
                     type="text"
                     id="pid"
                     placeholder="number"
                     value={dataExist('pid') ? props.processes[props.index].pid : ''}
-                    className={'w-14 mx-4'}
+                    className={'w-14'}
                 />
             </td>
-            <td>
+            <td className={'w-14 text-center'}>
                 <input
                     onChange={(e) => handleChange("brustTime",e)}
                     type="text"
                     id="brust-time"
                     placeholder="number"
                     value={dataExist('brustTime') ? props.processes[props.index].brustTime : ''}
-                    className={"w-14 mx-4"}
+                    className={"w-12"}
 
                 />
             </td>
-            <td>
+            <td className={'w-14 text-center'}>
                 <input
-                    onChange={(e) => handleChange("arrialTime",e)}
+                    onChange={(e) => handleChange("arrivalTime",e)}
                     type="text"
                     id="arrival-time"
                     placeholder="number"
-                    value={dataExist('arrialTime') ? props.processes[props.index].arrialTime : ''}
-                    className={"w-14 mx-4"}
+                    value={dataExist('arrivalTime') ? props.processes[props.index].arrialTime : ''}
+                    className={"w-12 "}
                 />  
             </td>
-            <td>
+            <td className={'w-14 text-center'}>
                 <input
                     // readOnly={needPriority === false}
-                    className={"w-14 mx-4"}
+                    className={"w-12 "}
                     onChange={(e) => handleChange("priority",e)}
                     type="text"
                     id="arrival-time"
