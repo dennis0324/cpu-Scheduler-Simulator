@@ -1,20 +1,27 @@
 import React, { useRef, useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-
+import {fcfs, sjf, srt, nonpreemptivePriority, preemptivePriority, rr, hrn} from 'cpuschedulerts';
 import Input from "../components/Input";
+import GrantChat from '../components/Output';
+import { defaultOption, OptionType } from '../components/Input/SelectAlgor';
+import { createProcess } from 'cpuschedulerts/dist/schedulAlgorithm/cpuScheduler';
 
 export type ControlProcess = {
   processes:any[]
+  selectAlgor:OptionType,
   addProcessRow:Function,
   removeProcessRow:Function,
-  changeValue:Function
+  changeValue:Function,
+  changeAlgorithm:Function,
+  simulate:Function
 }
 
 function Home({selectAlgor}) {
-  const [value, setValue] = useState('fcfs')
+  const [alogorithm, setAlogorithm] = useState(defaultOption)
+
   // const processesRef = useRef([]);
   const [processes,setProcesses] = useState([]);
+  const [result,setResult] = useState([]);
 
   const addProcessRow = () => {
     console.log(processes)
@@ -43,6 +50,63 @@ function Home({selectAlgor}) {
     setProcesses(currentProssess)
     console.log(processes)
   }
+
+  const simulate = () => {
+    let pcbs = processes.map(e => createProcess(
+      Number(e.pid),
+      Number(e.arrivalTime),
+      Number(e.brustTime),
+      Number(e.priority)
+    ))
+
+    pcbs = pcbs.sort((a,b) => a.arrivalTime - b.arrivalTime);
+    const unFilled = pcbs.find(e => Object.entries(e).find(([e,value])=> value === -1))
+    if(unFilled) return
+    if(alogorithm.value === 'FCFS'){
+      console.log(pcbs)
+      const FCFS = new fcfs();
+      FCFS.simulate(pcbs)
+      setResult(FCFS.getResult())
+      console.log(FCFS.getResult())
+    }
+    else if(alogorithm.value === 'HRN'){
+      const HRN = new hrn();
+      HRN.simulate(pcbs)
+      setResult(HRN.getResult())
+      console.log(HRN.getResult())
+    }
+    else if(alogorithm.value === 'NPP'){
+      const NPP = new nonpreemptivePriority();
+      NPP.simulate(pcbs)
+      setResult(NPP.getResult())
+      console.log(NPP.getResult())
+    }
+    else if(alogorithm.value === 'PP'){
+      const PP = new preemptivePriority();
+      PP.simulate(pcbs)
+      setResult(PP.getResult())
+      console.log(PP.getResult())
+    }
+    else if(alogorithm.value === 'RR'){
+      const RR = new rr(3);
+      RR.simulate(pcbs)
+      setResult(RR.getResult())
+      console.log(RR.getResult())
+    }
+    else if(alogorithm.value === 'SRTF'){
+      const SRTF = new srt(3);
+      SRTF.simulate(pcbs)
+      setResult(SRTF.getResult())
+      console.log(SRTF.getResult())
+    }
+    else if(alogorithm.value === 'SJF'){
+      const SJF = new sjf();
+      SJF.simulate(pcbs)
+      setResult(SJF.getResult())
+      console.log(SJF.getResult())
+    }
+  }
+
   // const 
   return (
     <React.Fragment>
@@ -59,11 +123,14 @@ function Home({selectAlgor}) {
             addProcessRow={addProcessRow}
             removeProcessRow={removeProcessRow}
             changeValue={changeValue}
+            selectAlgor={alogorithm}
+            changeAlgorithm={setAlogorithm}
+            simulate={simulate}
           />
         </div>
         
         <div className={'h-10 flex-col m-10'}>
-          testing
+          <GrantChat/>
         </div>
       </main>
     </React.Fragment>
