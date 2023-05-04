@@ -8,7 +8,7 @@ import {ControlProcess} from '../../pages/home';
 
 const StyleCompo = style.table`
   // border: 1px solid #e5e7eb;
-  border-collapse: seperate;
+
 `
 
 const StyledTHead = style.thead`
@@ -27,21 +27,6 @@ type InputProps = {
 
 function ProcessConatiner(props:ControlProcess){
   const [needPriority, setNeedPriority] = useState(false);
-
-  const handlePid = () => {
-    console.log("pid changed");
-  }
-
-  const handleBrust = () => {
-
-  }
-  
-  const handleArrival = () => {
-
-  }
-  const handlePriority = () => {
-  
-  }
   useEffect(() => {
     console.log("processchanged")
     // props.processes.current?.push({})
@@ -59,12 +44,12 @@ function ProcessConatiner(props:ControlProcess){
     <StyleCompo className={''}>
       <StyledTHead>
         <tr className={'w-full'}>
-          <th className={'px-4 py-4'}>index</th>
-          <th className={'px-4 py-4'}>pid</th>
-          <th className={'px-4 py-4'}>brustTime</th>
-          <th className={'px-4 py-4'}>ArrivalTime</th>
-          <th className={'px-4 py-4'}>Priority</th>
-          <th className={'px-4 py-4'}>
+          <th className={'w-14 px-4 py-4'}>index</th>
+          <th className={'w-14 px-4 py-4'}>pid</th>
+          <th className={'w-14 px-4 py-4'}>brustTime</th>
+          <th className={'w-14 px-4 py-4'}>ArrivalTime</th>
+          <th className={'w-14 px-4 py-4'}>Priority</th>
+          <th className={'w-14 px-4 py-4'}>
             <AddButton buttonPressed={props.addProcessRow}/>
           </th>
 
