@@ -5,7 +5,7 @@ import SelectAlgor, { defaultOption } from './SelectAlgor';
 import AddButton from './AddButton';
 import ProcessConatiner from './ProcessContainer';
 import {ControlProcess} from '../../pages/home';
-import RunButton from './RunButon';
+import RunButton from './RunButton';
 
 export const StyledSelect = styled(Select)`
   .react-select__control {
