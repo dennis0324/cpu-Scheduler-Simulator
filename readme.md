@@ -100,8 +100,8 @@ SRT.simulate(processArray)
 ### Available Methods
 | methods |  define:return |description | 
 | :---:| :---:| :---:|
-| push| [class].push(process:Process):void | to push process(pcb) in simulator |
-| simulate | [class].simulate():void | to simulate corresponding cpu scheduling simulator |
 | getResult | [class].getResult():Process[] | get a Array of result PCB |
+| simulate | [class].simulate():void | to simulate corresponding cpu scheduling simulator |
 | getAverageWaitingTime | [class].getAverageWaitingTime():number | get a AWT of corresponding simulator | 
 | getAverageTurnaroundTime | [class].getAverageTurnaroundTime():number | get a ATT of corresponding simulator | 
+| createProcess | createProcess(pid:number,brustTime:number,arrivalTime:number,priority:number):process | create a Process |
