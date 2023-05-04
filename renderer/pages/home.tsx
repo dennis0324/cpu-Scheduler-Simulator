@@ -50,7 +50,7 @@ function Home({selectAlgor}) {
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
       <main
-        className={`flex-col min-h-screen  p-24 justify-center`}
+        className={`flex min-h-screen  p-24 justify-center`}
       >
         {/* <ProcessContainer/> */}
         <div className={'flex-col'}>
