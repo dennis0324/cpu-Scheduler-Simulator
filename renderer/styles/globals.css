@@ -23,6 +23,9 @@
 }
 
 @layer components {
+  table{
+    width:600px;
+  }
   th{
     color: #9eabb4;
     font-weight: 500;
@@ -32,7 +35,7 @@
   }
 
   tbody td{
-    padding: 12px 8px !important;
+    padding: 12px 0px !important;
     vertical-align: middle !important;
     color: #53646f;
     font-size: 13px;
@@ -41,4 +44,5 @@
     line-height: 18px !important;
     border:0 !important;
   }
+  
 }
