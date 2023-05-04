@@ -1,6 +1,6 @@
 import Process from "@/types/process";
 import schedular from "@/schedulAlgorithm/cpuScheduler";
-import { MinPriorityQueue, PriorityQueue } from "@datastructures-js/priority-queue";
+import { PriorityQueue } from "@datastructures-js/priority-queue";
 
 export default class sjf extends schedular{
     private readyQueue:PriorityQueue<Process>;
