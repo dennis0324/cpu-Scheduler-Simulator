@@ -5,6 +5,7 @@ import SelectAlgor, { defaultOption } from './SelectAlgor';
 import AddButton from './AddButton';
 import ProcessConatiner from './ProcessContainer';
 import {ControlProcess} from '../../pages/home';
+import RunButton from './RunButon';
 
 export const StyledSelect = styled(Select)`
   .react-select__control {
@@ -37,7 +38,6 @@ export const StyledSelect = styled(Select)`
 `;
 
 function Input(props:ControlProcess){
-  const [selectedAlgo, setSelectedAlgo] = useState(defaultOption);
   const buttonPressed = () => {
     console.log("button pressed");
 
@@ -46,18 +46,25 @@ function Input(props:ControlProcess){
   return (
     <div>
       <fieldset>
-        <label>Cpu Scheduling Alogorithm</label>
-        <SelectAlgor
-        selectedAlgo={selectedAlgo}
-        setSelectedAlgo={setSelectedAlgo}
-      />
+        <label>ContorlSCheduler</label>
+        button1
+        button2
+        button3
       </fieldset>
       <fieldset>
+        <label>Cpu Scheduling Alogorithm</label>
+        <SelectAlgor
+        selectedAlgo={props.selectAlgor}
+        setSelectedAlgo={props.changeAlgorithm}
+      />
+      </fieldset>
+      <fieldset className='process-container'>
         <label>Process</label>
         <ProcessConatiner
           {...props}
         />
       </fieldset>
+      <RunButton buttonPressed={props.simulate}/>
     </div>
   );
 };
