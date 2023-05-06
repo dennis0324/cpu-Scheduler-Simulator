@@ -140,6 +140,10 @@ export default abstract class schedular{
         return this.result
     }
 
+    getTotalRunTime(){
+        return this.totalExecuteTime
+    }
+
     /**
      * get average waiting time of simulation
      * 시뮬레이션의 평균 대기 시간을 반환하는 함수
