@@ -57,7 +57,7 @@ type AlgoSelectProps = {
 };
 
 export const StyledSelect = styled(Select)`
-  width:600px;
+  width:400px;
   .react-select__control {
     box-sizing: border-box;
     border-color: #c5c7d0;

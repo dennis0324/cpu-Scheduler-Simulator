@@ -43,14 +43,22 @@ function Input(props:ControlProcess){
 
   }
 
+  const timeQuantum = () => {
+    if(props.selectAlgor.value === 'RR' || props.selectAlgor.value === 'SRTF'){
+      return (
+        <div>
+          TimQuatntum : 
+          <input
+            placeholder='time quantum eg. 1, 2'
+            onChange={(e) => props.setTimeQuantum(e.target.value)}
+          ></input>
+        </div>
+      )
+    }
+  }
+
   return (
-    <div>
-      <fieldset>
-        <label>ContorlSCheduler</label>
-        button1
-        button2
-        button3
-      </fieldset>
+    <div className={'flex flex-col'}>
       <fieldset>
         <label>Cpu Scheduling Alogorithm</label>
         <SelectAlgor
@@ -64,7 +72,12 @@ function Input(props:ControlProcess){
           {...props}
         />
       </fieldset>
-      <RunButton buttonPressed={props.simulate}/>
+      <fieldset>
+        {timeQuantum()}
+      </fieldset>
+      <fieldset className={'self-center '}>
+        <RunButton buttonPressed={props.simulate}/>
+      </fieldset>
     </div>
   );
 };

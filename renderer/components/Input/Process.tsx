@@ -12,6 +12,10 @@ function Process(props:ControlProcess & {index} ){
         props.changeValue(props.index,title,e.target.value)
     }
 
+    const needPriority = () => {
+        return props.selectAlgor.value === 'NPP' || props.selectAlgor.value === 'PP'
+    }
+
     const dataExist = (title) => {
         const data = props.processes[props.index][title]
         if(data=== undefined || data === -1){
@@ -59,6 +63,7 @@ function Process(props:ControlProcess & {index} ){
             <td className={'w-14 text-center'}>
                 <input
                     // readOnly={needPriority === false}
+                    disabled={!needPriority()}
                     className={"w-12 "}
                     onChange={(e) => handleChange("priority",e)}
                     type="text"

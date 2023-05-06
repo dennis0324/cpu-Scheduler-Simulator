@@ -44,12 +44,12 @@ function ProcessConatiner(props:ControlProcess){
     <StyleCompo className={''}>
       <StyledTHead>
         <tr className={'w-full'}>
-          <th className={'w-14 px-4 py-4'}>index</th>
-          <th className={'w-14 px-4 py-4'}>pid</th>
-          <th className={'w-14 px-4 py-4'}>brustTime</th>
-          <th className={'w-14 px-4 py-4'}>ArrivalTime</th>
-          <th className={'w-14 px-4 py-4'}>Priority</th>
-          <th className={'w-14 px-4 py-4'}>
+          <th className={'w-14 px-2 py-4'}>pid</th>
+          <th className={'w-14 px-2 py-4'}>index</th>
+          <th className={'w-14 px-2 py-4'}>brustTime</th>
+          <th className={'w-14 px-2 py-4'}>ArrivalTime</th>
+          <th className={'w-14 px-2 py-4'}>Priority</th>
+          <th className={'w-14 px-2 py-4'}>
             <AddButton buttonPressed={props.addProcessRow}/>
           </th>
 
@@ -57,7 +57,7 @@ function ProcessConatiner(props:ControlProcess){
       </StyledTHead>
       <tbody>
       {
-        props.processes.map((process, index) => <Process 
+        props.processes.map((process, index) => <Process key={index}
         {
           ...combine(index)
         }
