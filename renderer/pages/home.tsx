@@ -13,15 +13,17 @@ export type ControlProcess = {
   removeProcessRow:Function,
   changeValue:Function,
   changeAlgorithm:Function,
+  setTimeQuantum:Function,
   simulate:Function
 }
 
 function Home({selectAlgor}) {
   const [alogorithm, setAlogorithm] = useState(defaultOption)
-
+  const [timeQuantum, setTimeQuantum] = useState(5)
   // const processesRef = useRef([]);
   const [processes,setProcesses] = useState([]);
   const [result,setResult] = useState([]);
+  const [totalRuntime,setTotalRuntime] = useState(0);
 
   const addProcessRow = () => {
     console.log(processes)
@@ -60,7 +62,12 @@ function Home({selectAlgor}) {
     ))
 
     pcbs = pcbs.sort((a,b) => a.arrivalTime - b.arrivalTime);
-    const unFilled = pcbs.find(e => Object.entries(e).find(([e,value])=> value === -1))
+    const unFilled = pcbs.find(e => Object.entries(e).find(([e,value])=> {
+      if(selectAlgor === 'NPP' || selectAlgor === 'PP'){
+        return value === -1 && e === 'priority'
+      }
+      return value === -1 && e !== 'priority'
+    }))
     if(unFilled) return
     if(alogorithm.value === 'FCFS'){
       console.log(pcbs)
@@ -88,13 +95,13 @@ function Home({selectAlgor}) {
       console.log(PP.getResult())
     }
     else if(alogorithm.value === 'RR'){
-      const RR = new rr(3);
+      const RR = new rr(timeQuantum);
       RR.simulate(pcbs)
       setResult(RR.getResult())
       console.log(RR.getResult())
     }
     else if(alogorithm.value === 'SRTF'){
-      const SRTF = new srt(3);
+      const SRTF = new srt(timeQuantum);
       SRTF.simulate(pcbs)
       setResult(SRTF.getResult())
       console.log(SRTF.getResult())
@@ -114,9 +121,8 @@ function Home({selectAlgor}) {
         <title>Home - Nextron (with-typescript-tailwindcss)</title>
       </Head>
       <main
-        className={`flex min-h-screen  p-24 justify-center`}
+        className={`flex min-h-screen  p-12 justify-center h-min`}
       >
-        {/* <ProcessContainer/> */}
         <div className={'flex-col'}>
           <Input
             processes={processes}
@@ -125,13 +131,15 @@ function Home({selectAlgor}) {
             changeValue={changeValue}
             selectAlgor={alogorithm}
             changeAlgorithm={setAlogorithm}
+            setTimeQuantum={setTimeQuantum}
             simulate={simulate}
           />
         </div>
         
-        <div className={'h-10 flex-col m-10'}>
-          <GrantChat/>
+        <div className={'px-10'}>
+          <GrantChat processes={result}/>
         </div>
+        {/* <ProcessContainer/> */}
       </main>
     </React.Fragment>
   );

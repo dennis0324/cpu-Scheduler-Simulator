@@ -14,6 +14,9 @@
   body {
     font-family: 'Roboto', sans-serif;
   }
+
+  input:focus { outline: none !important; border-color: #74b0ff; box-shadow: 0 0 10px #74b0ff; }
+
 }
 
 @layer components {
@@ -23,8 +26,11 @@
 }
 
 @layer components {
+  fieldset{
+    @apply pt-1
+  }
   table{
-    width:600px;
+    width:400px;
   }
   th{
     color: #9eabb4;
@@ -45,4 +51,50 @@
     border:0 !important;
   }
   
+  .gantt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .gantt_timeline{
+    width:50px;
+    display:flex;
+  }
+
+  .gantt_timeline_conatiner{
+    width:50px;
+    height:400px;
+  }
+  .gantt_timeline_indicator{
+    height:40px;
+  }
+  .gantt_timeline_cell{
+    height:40px;
+  }
+
+  .gantt_timeline_divider{
+    background-color: hsl(0, 0%, 80%);
+    margin-bottom: 8px;
+    margin-top: 8px;
+    width: 1px;
+    box-sizing: border-box;
+  }
+
+  .button{
+    background-color:#f8f8f8;
+    margin:10px 0;
+    color: #9eabb4;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .output{
+    background-color:#f8f8f8;
+    width:300px;
+    height:400px;
+    display:flex;
+
+  }
 }
