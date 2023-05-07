@@ -52,31 +52,53 @@
   }
   
   .gantt{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; */
   }
   .gantt_timeline{
-    width:50px;
+    @apply p-4;
     display:flex;
+    flex-wrap: wrap;
+    justify-content:center;
   }
 
   .gantt_timeline_conatiner{
-    width:50px;
-    height:400px;
+
   }
   .gantt_timeline_indicator{
     height:40px;
+  }
+
+  .gantt_timeline_cell_container{
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
   }
   .gantt_timeline_cell{
     height:40px;
   }
 
   .gantt_timeline_divider{
-    background-color: hsl(0, 0%, 80%);
+    -webkit-align-self: stretch;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    background-color: hsl(0, 1%, 69%);
     margin-bottom: 8px;
     margin-top: 8px;
-    width: 1px;
+    width: 2px;
     box-sizing: border-box;
   }
 
@@ -92,9 +114,20 @@
 
   .output{
     background-color:#f8f8f8;
-    width:300px;
     height:400px;
     display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
+  .output table{
+    @apply m-2;
+  }
+  .output_table th{
+    @apply px-2 py-4
+  }
+
+  .output_table tbody{
+    background: #fff;
   }
 }
