@@ -79,6 +79,10 @@ export default abstract class schedular{
      * @param process type Process
      */
     onDispatch(process:Process){
+        if (this.currentTime < process.arrivalTime)
+        {
+            this.currentTime = process.arrivalTime;
+        }
         this.dispatchedPCB = process;
         this.dispatchedPCB!.executeTime = 0
         this.dispatchedPCB!.waitingTime = this.currentTime - this.dispatchedPCB!.lastfinishTime
@@ -117,6 +121,9 @@ export default abstract class schedular{
      * @param processes 
      */
     simulate(processes:Process[]){
+        if(processes.length <= 0) return new Error("processes length should be bigger than 0")
+        if(processes.find(e => e.arrivalTime < 0)) return new Error("arrival time should be bigger than 0")
+        if(processes.find(e => e.burstTime <= 0)) return new Error("burst time should be bigger than 0")
         this.processQueue = processes.sort((a,b) => a.arrivalTime - b.arrivalTime)
         this.processQueue.forEach(e => this.push(e))
         // 잔여 프로세스 실행 remaining process execute
