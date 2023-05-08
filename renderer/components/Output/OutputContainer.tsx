@@ -19,13 +19,13 @@ function OutputContainer({result}){
             }
 
         })
+        console.log(group)
         return group
     }
     const getAverageFinishTime = () => {
         let total = 0;
         group.forEach((value,key) => {
             const lastOne = result?.slice().reverse().find(e => e.pid === key)
-            console.log("eky",value,lastOne)
             total += lastOne.waitingTime + lastOne.executeTime
         }) 
         return (total / group.size).toFixed(2)
@@ -47,9 +47,6 @@ function OutputContainer({result}){
         return (total / group.size).toFixed(2)        
     }
 
-
-
-
     useEffect(() => {
         setGroup(grouped())
         // console.log("waitingTime",result.sort((a,b) => a.waitingTime - b.waitingTime))
@@ -70,17 +67,14 @@ function OutputContainer({result}){
                 </tr>
             </thead>
             <tbody>
-                {/* {result?.map((table,index) => {
-                    console.log(table)
-                    return <OutputRow key={index} data={table} group={group.get(table.pid)}/>
-                })} */}
-                {Array.from(group.values())?.map((table,index) => {
+                {
+                Array.from(group.values())?.map((table,index) => {
                     console.log(table[0])
                     return <OutputRow key={index} data={table[0]} group={table} processes={result}/>
                 }
                 )}
                 <tr>
-                    <td colSpan={3} className="text-right">average</td>
+                    <td colSpan={3} className="text-right px-1">average: </td>
                     <td>{getAverageFinishTime()}</td>
                     <td>{getAverageWaitingTime()}</td>
                     <td>{getAverageTrunAroundTime()}</td>

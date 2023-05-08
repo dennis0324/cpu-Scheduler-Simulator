@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
 import SelectAlgor, { defaultOption } from './SelectAlgor';
@@ -6,6 +6,8 @@ import AddButton from './AddButton';
 import ProcessConatiner from './ProcessContainer';
 import {ControlProcess} from '../../pages/home';
 import RunButton from './RunButton';
+import { ipcRenderer } from 'electron';
+import LoadIcon from '../svg/LoadIcon';
 
 export const StyledSelect = styled(Select)`
   .react-select__control {
@@ -38,17 +40,13 @@ export const StyledSelect = styled(Select)`
 `;
 
 function Input(props:ControlProcess){
-  const buttonPressed = () => {
-    console.log("button pressed");
-
-  }
-
   const timeQuantum = () => {
     if(props.selectAlgor.value === 'RR' || props.selectAlgor.value === 'SRTF'){
       return (
         <div>
           TimQuatntum : 
           <input
+            value={props.timeQuantum ? props.timeQuantum : ''}
             placeholder='time quantum eg. 1, 2'
             onChange={(e) => props.setTimeQuantum(e.target.value)}
           ></input>
@@ -57,6 +55,10 @@ function Input(props:ControlProcess){
     }
   }
 
+  const load = () => {
+    ipcRenderer.send('open-file-dialog')
+  }
+  
   return (
     <div className={'flex flex-col'}>
       <fieldset>
@@ -67,7 +69,13 @@ function Input(props:ControlProcess){
       />
       </fieldset>
       <fieldset className='process-container'>
-        <label>Process</label>
+        <div className='flex justify-between'>
+          <label>Process</label>
+          <button onClick={load}>
+            <LoadIcon size={25} color={"#53646f"}/>
+          </button>
+        </div>
+
         <ProcessConatiner
           {...props}
         />
