@@ -3,17 +3,10 @@ import NextButton from "../Input/NextButton"
 import DoubleArrowButton from "./DoubleArrowButton"
 import OutputContainer from "./OutputContainer"
 function GrantChat({processes}){
-    const [height,setHeight] = useState(0)
-    const [sec,setSec] = useState(0)
-
-    useEffect(()=> {
-        const total = processes.reduce((acc,cur) => acc + cur.burstTime,0)
-        setHeight(total * 10)
-    },[processes])
 
 
     const showOnResult = () => {
-        if(processes)
+        if(processes.length > 0)
         return (
             <React.Fragment>
                 <fieldset>
@@ -50,7 +43,7 @@ function GrantChat({processes}){
             {
                 showOnResult()
             }
-            
+
         </div>
     )
 }
