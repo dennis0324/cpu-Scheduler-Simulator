@@ -46,7 +46,7 @@ const options: OptionType[] = [
     label: 'Priority (preemptive), PP',
   },
   {
-    value: 'PP',
+    value: 'SRTF',
     label: 'Shortest Remaining Time, SRT',
   },
 ];
