@@ -1,24 +1,11 @@
-<p align="center"><img src="https://i.imgur.com/a9QWW0v.png"></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/50710829/236683025-3f61fbd7-a987-4e43-81b7-a399a8bbdab6.png"></p>
 
 ## Usage
-
-### Create an App
-
-```
-# with npx
-$ npx create-nextron-app my-app --example with-tailwindcss
-
-# with yarn
-$ yarn create nextron-app my-app --example with-tailwindcss
-
-# with pnpx
-$ pnpx create-nextron-app my-app --example with-tailwindcss
-```
 
 ### Install Dependencies
 
 ```
-$ cd my-app
+$ cd cpu-Scheduler-Simulator-web
 
 # using yarn or npm
 $ yarn (or `npm install`)
@@ -35,4 +22,5 @@ $ yarn dev (or `npm run dev` or `pnpm run dev`)
 
 # production build
 $ yarn build (or `npm run build` or `pnpm run build`)
+$ npm run build:win64
 ```
