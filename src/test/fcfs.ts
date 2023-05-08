@@ -17,8 +17,8 @@ const processArray = [
   {
     pid: 1,
     arrivalTime: 1,
-    burstTime: 28,
-    remainingTime: 28,
+    burstTime: 0,
+    remainingTime: 0,
     priority: 2,
     waitingTime: 0,
     completionTime: 0,

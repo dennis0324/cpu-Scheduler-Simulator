@@ -7,7 +7,7 @@ path = path.split(":")[1]
 
 const child = execFile('ts-node', ["-r", "tsconfig-paths/register",path], (error, stdout, stderr) => {
     if (error) {
-       throw error;
+       console.error(error);
     }
     console.log(stdout);
 });
