@@ -56,7 +56,7 @@ function Process(props:ControlProcess & {index} ){
                     type="text"
                     id="arrival-time"
                     placeholder="number"
-                    value={dataExist('arrivalTime') ? props.processes[props.index].arrialTime : ''}
+                    value={dataExist('arrivalTime') ? props.processes[props.index].arrivalTime : ''}
                     className={"w-12 "}
                 />  
             </td>
