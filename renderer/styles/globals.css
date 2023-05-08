@@ -113,8 +113,8 @@
   }
 
   .output{
+    @apply p-4;
     background-color:#f8f8f8;
-    height:400px;
     display:flex;
     flex-direction: column;
     align-items: center;
