@@ -137,7 +137,7 @@ function Home({selectAlgor}) {
   return (
     <React.Fragment>
       <Head>
-        <title>Home - Nextron (with-typescript-tailwindcss)</title>
+        <title>cpuScheduler</title>
       </Head>
       <main
         className={`flex min-h-screen  p-12 justify-center h-min`}
