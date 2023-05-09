@@ -15,6 +15,7 @@ export default abstract class schedular{
     // 실행 중인 프로세스 executed process
     protected dispatchedPCB:Process | null
 
+    private initial:boolean
     constructor(){
         this.currentTime = 0;
         this.dispatchedPCB = null;
@@ -22,9 +23,9 @@ export default abstract class schedular{
         this.processQueue = [];
 
         this.totalExecuteTime = 0;
+        this.initial = false;
 
     }
-    
     /**
      * if scheduler is on working
      * 다음의 스케줄러가 아직 실행 상태인지 확인하는 함수이다.
@@ -79,9 +80,10 @@ export default abstract class schedular{
      * @param process type Process
      */
     onDispatch(process:Process){
-        if (this.currentTime < process.arrivalTime)
+        if (!this.initial)
         {
             this.currentTime = process.arrivalTime;
+            this.initial = true;
         }
         this.dispatchedPCB = process;
         this.dispatchedPCB!.executeTime = 0
