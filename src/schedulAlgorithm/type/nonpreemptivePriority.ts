@@ -8,6 +8,8 @@ export default class nonpreemptivePriority extends schedular{
     constructor(){
         super()
         this.readyQueue = new PriorityQueue<Process>((a,b) => {
+                if(a.priority == b.priority)
+                return a.arrivalTime > b.arrivalTime ? 1 : -1
             return a.priority > b.priority ? 1 : -1
         })
     }
