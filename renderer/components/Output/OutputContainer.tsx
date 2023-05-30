@@ -20,6 +20,7 @@ function OutputContainer({result}){
 
         })
         console.log(group)
+        group
         return group
     }
     const getAverageFinishTime = () => {
@@ -47,6 +48,16 @@ function OutputContainer({result}){
         return (total / group.size).toFixed(2)        
     }
 
+    const sortedMap = () => {
+        const temp = Array.from(group.values())
+        const returnValue = temp.sort((a,b) => {
+            if(a[0].pid > b[0].pid) return 1;
+            if(a[0].pid < b[0].pid) return -1;
+            return 0;
+        })
+        return returnValue
+    }
+
     useEffect(() => {
         setGroup(grouped())
         // console.log("waitingTime",result.sort((a,b) => a.waitingTime - b.waitingTime))
@@ -68,7 +79,7 @@ function OutputContainer({result}){
             </thead>
             <tbody>
                 {
-                Array.from(group.values())?.map((table,index) => {
+               sortedMap()?.map((table,index) => {
                     console.log(table[0])
                     return <OutputRow key={index} data={table[0]} group={table} processes={result}/>
                 }

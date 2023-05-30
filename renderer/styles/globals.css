@@ -27,7 +27,8 @@
 
 @layer components {
   fieldset{
-    @apply pt-1
+    @apply pt-1;
+    width: 100%;
   }
   table{
     width:400px;
@@ -61,11 +62,20 @@
     display:flex;
     flex-wrap: wrap;
     justify-content:center;
+    gap: 20px 0;
   }
 
   .gantt_timeline_conatiner{
 
   }
+
+  .gantt_timeline_divider::before {
+    content: attr(data-curentTime);
+    position: absolute;
+    transform: translate(-50%,-110%);
+    top:0;
+  }
+
   .gantt_timeline_indicator{
     height:40px;
   }
@@ -100,6 +110,7 @@
     margin-top: 8px;
     width: 2px;
     box-sizing: border-box;
+    position: relative;
   }
 
   .button{
@@ -119,7 +130,9 @@
     flex-direction: column;
     align-items: center;
   }
-
+  .output-title{
+    font-size: 20px;
+  }
   .output table{
     @apply m-2;
   }
